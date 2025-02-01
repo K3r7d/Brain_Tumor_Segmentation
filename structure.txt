@@ -1,0 +1,45 @@
+MLProject_forfun/
+├── README.md                   # Project overview, setup instructions, and course info
+├── requirements.txt            # Python dependencies
+├── .gitignore                 # Specify files/folders to ignore
+├── notebooks/                 # Jupyter notebooks for assignments and experiments
+│   ├── assignment1/
+│   │   ├── exploration.ipynb
+│   │   └── submission.ipynb
+│   ├── assignment2/
+│   └── final_project/
+│
+├── data/                      # Dataset directory
+│   ├── raw/                   # Original, immutable data
+│   ├── processed/             # Cleaned and preprocessed data
+│   └── external/              # External source data
+│
+├── src/                       # Source code
+│   ├── __init__.py
+│   ├── data/                 # Data processing scripts
+│   │   ├── __init__.py
+│   │   ├── make_dataset.py
+│   │   └── preprocess.py
+│   │
+│   ├── features/             # Feature engineering scripts
+│   │   ├── __init__.py
+│   │   └── build_features.py
+│   │
+│   ├── models/               # Model training and prediction scripts
+│   │   ├── __init__.py
+│   │   ├── train_model.py
+│   │   └── predict_model.py
+│   │
+│   └── visualization/        # Visualization scripts
+│       ├── __init__.py
+│       └── visualize.py
+│
+├── models/                    # Saved model files
+│   ├── trained/              # Trained model artifacts
+│   └── experiments/          # Experimental model versions
+│
+├── docs/                   #documentation
+└── tests/                    # Unit tests
+    ├── __init__.py
+    ├── test_data.py
+    └── test_models.py
