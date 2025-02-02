@@ -1,8 +1,9 @@
 MLProject_forfun/
 ├── README.md                   # Project overview, setup instructions, and course info
 ├── requirements.txt            # Python dependencies
-├── .gitignore                 # Specify files/folders to ignore
-├── notebooks/                 # Jupyter notebooks for assignments and experiments
+├── structure.txt               # Structure of project
+├── .gitignore                  # Specify files/folders to ignore
+├── notebooks/                  # Jupyter notebooks for assignments and experiments
 │   ├── assignment1/
 │   │   ├── exploration.ipynb
 │   │   └── submission.ipynb
