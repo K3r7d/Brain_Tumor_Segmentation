@@ -1,5 +1,3 @@
-# src/models/unet_model.py
-
 import numpy as np
 import cv2
 from sklearn.metrics import classification_report
@@ -39,4 +37,3 @@ class UNet:
         """
         pass
 
-        return output

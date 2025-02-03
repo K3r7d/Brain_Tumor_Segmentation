@@ -30,12 +30,11 @@ def normalize_images(images):
     """
     normalize images to [0, 1] range.
     """
-    return images / 255.0
-
-
-import numpy as np
-import random
-
+    normalized_images = []
+    for image in images:
+        normalized_image = image.astype(np.float32) / 255.0
+        normalized_images.append(normalized_image)
+    return normalized_images
 
 def augment_data(images):
     """

@@ -12,10 +12,13 @@ class TestDataProcessing(unittest.TestCase):
         valid_folder = "../../data/raw/valid"
 
         train_images, train_filenames = load_images_from_folder(train_folder)
-        test_images, test_filenames = load_images_from_folder(test_folder)
-        valid_images, valid_filenames = load_images_from_folder(valid_folder)
-
         print(f"Loaded {len(train_images)} training images.")
+
+        test_images, test_filenames = load_images_from_folder(test_folder)
+        print(f"Loaded {len(train_images)} training images.")
+
+        valid_images, valid_filenames = load_images_from_folder(valid_folder)
+        print(f"Loaded {len(valid_images)} training images.")
 
 
     def test_resize_images(self):
@@ -23,6 +26,6 @@ class TestDataProcessing(unittest.TestCase):
 
     def test_augment_images(self):
         pass
-    
+
 if __name__ == "__main__":
     unittest.main()
