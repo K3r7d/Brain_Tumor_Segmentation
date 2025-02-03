@@ -16,6 +16,14 @@
 - pip
 - git
 
+#### Clone the Repository
+To get started, first clone the repository:
+
+```bash
+git clone https://github.com/K3r7d/MLProject_forfun.git
+cd MLProject_forfun
+```
+
 ##### Windows
 1. Install Python from official website
 2. Open Command Prompt
