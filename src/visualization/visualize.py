@@ -26,11 +26,6 @@ def visualize_images(images, size=(256, 256)):
     axes[1].set_title("Resized Image")
     axes[1].axis('off')
 
-    # Display normalized image
-    normalized_image = normalize_images([images[0]])[0]
-    axes[2].imshow(normalized_image)
-    axes[2].set_title("Normalized Image")
-    axes[2].axis('off')
 
     plt.tight_layout()
     plt.show()

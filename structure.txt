@@ -3,12 +3,8 @@ MLProject_forfun/
 ├── requirements.txt            # Python dependencies
 ├── structure.txt               # Structure of project
 ├── .gitignore                  # Specify files/folders to ignore
-├── notebooks/                  # Jupyter notebooks for assignments and experiments
-│   ├── assignment1/
-│   │   ├── exploration.ipynb
-│   │   └── submission.ipynb
-│   ├── assignment2/
-│   └── final_project/
+├── notebooks/                  # Jupyter notebooks 
+│   ├── run.ipynb               # Notebook to run the project
 │
 ├── data/                      # Dataset directory
 │   ├── raw/                   # Original, immutable data

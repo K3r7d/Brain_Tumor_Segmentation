@@ -1,28 +1,14 @@
-# src/data/preprocess.py
-
 import cv2
 import numpy as np
 import os
 import random
 
+
 def resize_images(images, target_size=(256, 256)):
     """
-    Resize image using Nearest Neighbor interpolation.
+    Resize images using OpenCV's resize function with Nearest Neighbor interpolation.
     """
-    resized_images = []
-
-    for image in images:
-        original_height, original_width = image.shape[:2]
-        target_width, target_height = target_size
-        scale_x = original_width / target_width
-        scale_y = original_height / target_height
-        resized_image = np.zeros((target_height, target_width, image.shape[2]), dtype=image.dtype)
-        for y in range(target_height):
-            for x in range(target_width):
-                src_x = int(x * scale_x)
-                src_y = int(y * scale_y)
-                resized_image[y, x] = image[src_y, src_x]
-        resized_images.append(resized_image)
+    resized_images = [cv2.resize(image, target_size, interpolation=cv2.INTER_NEAREST) for image in images]
     return resized_images
 
 
@@ -30,11 +16,7 @@ def normalize_images(images):
     """
     normalize images to [0, 1] range.
     """
-    normalized_images = []
-    for image in images:
-        normalized_image = image.astype(np.float32) / 255.0
-        normalized_images.append(normalized_image)
-    return normalized_images
+    return [image / 255.0 for image in images]
 
 def augment_data(images):
     """
@@ -57,7 +39,12 @@ def augment_data(images):
         return image
 
     def random_rotate(image):
-        # Get the center of the image
+        """
+        Using rotation matrix to rotate the image.
+            [cos(theta) -sin(theta)]
+            [sin(theta)  cos(theta)]
+        theta is the angle of rotation.
+        """
         center = tuple(np.array(image.shape[1::-1]) / 2)
         angle = random.randint(-30, 30)  # Random angle between -30 to 30 degrees
         rotation_matrix = np.array([[np.cos(np.deg2rad(angle)), -np.sin(np.deg2rad(angle))],
@@ -76,6 +63,9 @@ def augment_data(images):
         return rotated_image
 
     def random_translate(image):
+        """
+        Translate the image by a random number of pixels in both x and y directions.
+        """
         tx = random.randint(-20, 20)
         ty = random.randint(-20, 20)
         translated_image = np.roll(image, (tx, ty), axis=(1, 0))
@@ -84,11 +74,19 @@ def augment_data(images):
     # Color-Based Augmentations
 
     def random_brightness(image):
-        factor = random.uniform(0.5, 1.5)  # Random factor between 0.5 and 1.5
+        """
+        Randomly adjust the brightness of the image 
+        by multiplying each pixel value by a random factor.
+        """
+        factor = random.uniform(0.5, 1.5) 
         image = np.clip(image * factor, 0, 255).astype(np.uint8)
         return image
 
     def random_contrast(image):
+        """
+        Randomly adjust the contrast of the image
+        by scaling the pixel values around the mean.
+        """
         factor = random.uniform(0.5, 1.5)  # Random factor between 0.5 and 1.5
         mean = np.mean(image)
         image = np.clip((image - mean) * factor + mean, 0, 255).astype(np.uint8)
@@ -104,8 +102,12 @@ def augment_data(images):
     # Noise Injection
 
     def add_gaussian_noise(image):
+        """
+        Add Gaussian noise to the image
+        with a mean of 0 and a standard deviation of 25.
+        """
         mean = 0
-        sigma = 25  # Standard deviation of noise
+        sigma = 25  
         noise = np.random.normal(mean, sigma, image.shape)
         noisy_image = np.clip(image + noise, 0, 255).astype(np.uint8)
         return noisy_image
@@ -169,5 +171,3 @@ def augment_data(images):
         augmented_images.append(augmented_image)
 
     return augmented_images
-
-
