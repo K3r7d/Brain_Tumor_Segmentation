@@ -1,11 +1,10 @@
-MLProject_forfun/
+Brain-Tumor-segmentation/
 ├── README.md                   # Project overview, setup instructions, and course info
 ├── requirements.txt            # Python dependencies
 ├── structure.txt               # Structure of project
 ├── .gitignore                  # Specify files/folders to ignore
-├── notebooks/                  # Jupyter notebooks 
-│   ├── run.ipynb               # Notebook to run the project
-│
+├── main.py                     # Main script to run the project
+├── setup.py                    # Install project as a package
 ├── data/                      # Dataset directory
 │   ├── raw/                   # Original, immutable data
 │   ├── processed/             # Cleaned and preprocessed data
