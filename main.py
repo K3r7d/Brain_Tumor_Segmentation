@@ -3,6 +3,10 @@
 from src.data.make_dataset import load_data
 import matplotlib.pyplot as plt
 
+BATCH_SIZE = 32
+NUM_EPOCHS = 10
+LEARNING_RATE =1e-3
+
 def main():
     annotation_file = 'data/raw/train/_annotations.coco.json'
     images_dir = 'data/raw/train/'
