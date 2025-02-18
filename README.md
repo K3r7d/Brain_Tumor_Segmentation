@@ -20,7 +20,7 @@
 To get started, first clone the repository:
 
 ```bash
-git clone https://github.com/K3r7d/MLProject_forfun.git
+git clone https://github.com/K3r7d/Brain_Tumor_Segmentation.git
 cd MLProject_forfun
 ```
 
