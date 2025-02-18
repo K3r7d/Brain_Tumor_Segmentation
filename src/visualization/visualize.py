@@ -1,31 +1,24 @@
 import matplotlib.pyplot as plt
-from src.data.preprocess import resize_images, normalize_images
-def visualize_image(image):
-    """
-    Display an image.
-    """
-    # Implement image visualization here
-    pass
-def visualize_segmentation(image, prediction):
-    """
-    Visualize the original image and the predicted tumor regions.
-    """
-    # Implement segmentation visualization here
-    pass
-def visualize_images(images, size=(256, 256)):
-    fig, axes = plt.subplots(1, 3, figsize=(12, 4))
-
-    # Display original images
-    axes[0].imshow(images[0])
-    axes[0].set_title("Original Image")
-    axes[0].axis('off')
-
-    # Resize and display the resized images
-    resized_image = resize_images([images[0]], size)[0]
-    axes[1].imshow(resized_image)
-    axes[1].set_title("Resized Image")
-    axes[1].axis('off')
-
-
-    plt.tight_layout()
+import os
+import json
+import numpy as np
+def visualize(image, mask):
+    fig, ax = plt.subplots(1, 2, figsize=(10, 5))
+    ax[0].imshow(image)
+    ax[1].imshow(mask)
     plt.show()
+
+def visualize_random_images(image_folder, mask_folder):
+    image_files = os.listdir(image_folder)
+    random_image = np.random.choice(image_files)
+    image_path = os.path.join(image_folder, random_image)
+    mask_path = os.path.join(mask_folder, random_image.replace('.jpg', '_mask.tif'))
+    image = plt.imread(image_path)
+    mask = plt.imread(mask_path)
+    visualize(image, mask)
+
+if __name__ == '__main__':
+    image_folder = 'data/processed/images/'
+    mask_folder = 'data/processed/masks/'
+    visualize_random_images(image_folder, mask_folder)
+    
